@@ -32,9 +32,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 	
 	@Override
-	public List<Courses> getCourses() {
-		//return list;
-		
+	public List<Courses> getCourses() {	
 		return courseDao.findAll();
 	}
 
@@ -94,7 +92,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public ResponseEntity<HttpStatus> deleteAllCourses() {
+	public ResponseEntity<HttpStatus> deleteAll() {
 		courseDao.deleteAll();
 		databaseFileDao.deleteAll();
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);

@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springRest.springRest.services.CourseService;
 
 @RestController
-public class DeleteTable {
+public class DeleteTableController {
 	
 	@Autowired
 	private CourseService service;
 	
-	@DeleteMapping("/courses")
-	public ResponseEntity<HttpStatus> deleteAllCourses() {
-		return service.deleteAllCourses();
+	@DeleteMapping("/deleteAll")
+	public ResponseEntity<HttpStatus> deleteAll() {
+		return service.deleteAll();
 	}
 }

@@ -1,13 +1,13 @@
-package com.springRest.springRest.paylod;
+package com.springRest.springRest.payload;
 
-public class Response {
+public class ImageUploadResponse {
     private String fileName;
     private String fileDownloadUri;
     private String fileType;
     private long size;
     private String id;
 
-    public Response(String fileName, String fileDownloadUri, String fileType, long size, String id) {
+    public ImageUploadResponse(String fileName, String fileDownloadUri, String fileType, long size, String id) {
         this.fileName = fileName;
         this.fileDownloadUri = fileDownloadUri;
         this.fileType = fileType;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.springRest.springRest.entities.Courses;
+import com.springRest.springRest.payload.CoursesResponse;
 import com.springRest.springRest.services.CourseService;
 
 @RestController
@@ -29,8 +30,18 @@ public class Controller {
 	
 	//GetList
 	@GetMapping("/courses")
-	public List<Courses> getCourses() {
-		return service.getCourses();	
+	public CoursesResponse getCourses() {
+		CoursesResponse outputResponse = new CoursesResponse();
+		try {
+			List<Courses> courses = service.getCourses();
+			outputResponse.setStatus(HttpStatus.OK);
+			outputResponse.setCourseList(courses);
+
+		} catch (Exception e) {
+			outputResponse.setStatus(HttpStatus.SERVICE_UNAVAILABLE);
+		}
+
+		return outputResponse;
 	}
 	
 	@GetMapping("/courses/{courseId}")

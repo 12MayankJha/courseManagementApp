@@ -18,7 +18,7 @@ public interface CourseService {
 
 	public ResponseEntity<HttpStatus> deleteCourse(Long courseId);
 
-	public ResponseEntity<HttpStatus> deleteAllCourses();
+	public ResponseEntity<HttpStatus> deleteAll();
 
 	
 
