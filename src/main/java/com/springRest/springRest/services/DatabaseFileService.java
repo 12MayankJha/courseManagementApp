@@ -1,6 +1,7 @@
 package com.springRest.springRest.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,8 +12,10 @@ public interface DatabaseFileService {
 
 	DatabaseFile getFile(String fileId);
 
-	DatabaseFile storeFile(MultipartFile file);
+	DatabaseFile storeFile(MultipartFile file, Boolean isPopular, String category);
 	
-	public List<ImageDataResponse> getAllImageData();
+	Map<String, List<ImageDataResponse>> getAllImageData();
 
+	Map<String, List<ImageDataResponse>> getAllPopularImageData();
+	
 }

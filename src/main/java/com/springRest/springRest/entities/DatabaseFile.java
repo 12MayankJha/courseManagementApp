@@ -15,6 +15,10 @@ public class DatabaseFile {
 	private String fileName;
 
 	private String fileType;
+	
+	private Boolean isPopular;
+	
+	private String category;
 
 	@Lob
 	private byte[] data;
@@ -23,11 +27,16 @@ public class DatabaseFile {
 
 	}
 
-	public DatabaseFile(String fileName, String fileType, byte[] data) {
+
+	public DatabaseFile(String fileName, String fileType, Boolean isPopular, String category, byte[] data) {
+		super();
 		this.fileName = fileName;
 		this.fileType = fileType;
+		this.isPopular = isPopular;
+		this.category = category;
 		this.data = data;
 	}
+
 
 	public String getId() {
 		return id;
@@ -60,4 +69,24 @@ public class DatabaseFile {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+	public Boolean getIsPopular() {
+		return isPopular;
+	}
+
+
+	public void setIsPopular(Boolean isPopular) {
+		this.isPopular = isPopular;
+	}
+
 }
