@@ -20,7 +20,7 @@ public class DatabaseFile {
 	
 	private String category;
 
-	
+	@Lob
 	private byte[] data;
 
 	public DatabaseFile() {

@@ -1,7 +1,5 @@
 package com.springRest.springRest.Helper;
 
-import javax.servlet.http.Cookie;
-
 public class ImageHelper {
 	
 	public static final String CAKES = "cakes";

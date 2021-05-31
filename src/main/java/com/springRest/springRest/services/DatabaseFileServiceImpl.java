@@ -3,9 +3,7 @@ package com.springRest.springRest.services;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import com.springRest.springRest.dao.DatabaseFileRepository;
 import com.springRest.springRest.entities.DatabaseFile;
 import com.springRest.springRest.exceptions.FileNotFoundException;
 import com.springRest.springRest.exceptions.FileStorageException;
-import com.springRest.springRest.payload.ImageUploadResponse;
 import com.springRest.springRest.payload.ImageDataResponse;
 
 @Service
