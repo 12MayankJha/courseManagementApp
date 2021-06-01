@@ -1,7 +1,9 @@
 package com.springRest.springRest.entities;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
+import javax.lang.model.util.Types;
 import javax.persistence.*;
 
 @Entity
@@ -19,12 +21,13 @@ public class DatabaseFile {
 	private Boolean isPopular;
 	
 	private String category;
-
+	
 	@Lob
+	//@Type(type = "org.hibernate.type.ImageType")
 	private byte[] data;
 
 	public DatabaseFile() {
-
+		super();
 	}
 
 
