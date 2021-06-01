@@ -33,10 +33,15 @@ public class ImageController {
 	private DatabaseFileService fileStorageService;
 
 	@PostMapping("/uploadFile")
-	public ImageUploadResponse uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("isPopular") Boolean isPopular, @RequestParam("category") String category) {
-		
-		DatabaseFile fileName = fileStorageService.storeFile(file, isPopular, category);
-		
+	public ImageUploadResponse uploadFile(@RequestParam("file") MultipartFile file,
+			@RequestParam("isPopular") Boolean isPopular,
+			@RequestParam("category") String category,
+			@RequestParam("name") String name,
+			@RequestParam("price") String price
+			) {
+
+		DatabaseFile fileName = fileStorageService.storeFile(file, isPopular, category, name, price);
+
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/")
 				.path(fileName.getId()).toUriString();
 
@@ -48,7 +53,7 @@ public class ImageController {
 	public List<ImageUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
 		return Arrays.asList(files)
 				.stream()
-				.map(file -> uploadFile(file, false, ImageHelper.CAKES))
+				.map(file -> uploadFile(file, false, ImageHelper.CAKES, null, null))
 				.collect(Collectors.toList());
 	}
 
@@ -62,8 +67,8 @@ public class ImageController {
 				.body(new ByteArrayResource(databaseFile.getData()));
 	}
 
-	@GetMapping("/getALLImageData")
-	public ResponseEntity<Map<String, List<ImageDataResponse>>> getALLImageData() {
+	@GetMapping("/getAllImageData")
+	public ResponseEntity<Map<String, List<ImageDataResponse>>> getAllImageData() {
 		Map<String, List<ImageDataResponse>> list = fileStorageService.getAllImageData();
 		if (!list.isEmpty()) {
 			return ResponseEntity.ok(list);
@@ -72,8 +77,8 @@ public class ImageController {
 		}
 	}
 	
-	@GetMapping("/getALLPopularImageData")
-	public ResponseEntity<Map<String, List<ImageDataResponse>>> getALLPopularImageData() {
+	@GetMapping("/getAllPopularImageData")
+	public ResponseEntity<Map<String, List<ImageDataResponse>>> getAllPopularImageData() {
 		Map<String, List<ImageDataResponse>> list = fileStorageService.getAllPopularImageData();
 		if (!list.isEmpty()) {
 			return ResponseEntity.ok(list);

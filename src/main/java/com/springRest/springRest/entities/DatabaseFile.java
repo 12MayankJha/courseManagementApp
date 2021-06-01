@@ -1,9 +1,6 @@
 package com.springRest.springRest.entities;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-
-import javax.lang.model.util.Types;
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +19,10 @@ public class DatabaseFile {
 	
 	private String category;
 	
+	private String name;
+	
+	private String price;
+	
 	@Lob
 	//@Type(type = "org.hibernate.type.ImageType")
 	private byte[] data;
@@ -31,13 +32,16 @@ public class DatabaseFile {
 	}
 
 
-	public DatabaseFile(String fileName, String fileType, Boolean isPopular, String category, byte[] data) {
+	public DatabaseFile(String fileName, String fileType, Boolean isPopular, String category, byte[] data, String name,
+			String price) {
 		super();
 		this.fileName = fileName;
 		this.fileType = fileType;
 		this.isPopular = isPopular;
 		this.category = category;
 		this.data = data;
+		this.name = name;
+		this.price = price;
 	}
 
 
@@ -90,6 +94,26 @@ public class DatabaseFile {
 
 	public void setIsPopular(Boolean isPopular) {
 		this.isPopular = isPopular;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 }

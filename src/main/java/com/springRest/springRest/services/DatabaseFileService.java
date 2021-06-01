@@ -12,7 +12,7 @@ public interface DatabaseFileService {
 
 	DatabaseFile getFile(String fileId);
 
-	DatabaseFile storeFile(MultipartFile file, Boolean isPopular, String category);
+	DatabaseFile storeFile(MultipartFile file, Boolean isPopular, String category, String name, String price);
 	
 	Map<String, List<ImageDataResponse>> getAllImageData();
 

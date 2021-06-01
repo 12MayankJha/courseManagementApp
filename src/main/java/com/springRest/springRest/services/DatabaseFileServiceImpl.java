@@ -26,7 +26,7 @@ public class DatabaseFileServiceImpl implements DatabaseFileService {
 	private DatabaseFileRepository dbFileRepository;
 
 	@Override
-	public DatabaseFile storeFile(MultipartFile file, Boolean isPopular, String category) {
+	public DatabaseFile storeFile(MultipartFile file, Boolean isPopular, String category, String name, String price) {
 		// Normalize file name
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -36,7 +36,7 @@ public class DatabaseFileServiceImpl implements DatabaseFileService {
 				throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
 			}
 
-			DatabaseFile dbFile = new DatabaseFile(fileName, file.getContentType(), isPopular, category, file.getBytes());
+			DatabaseFile dbFile = new DatabaseFile(fileName, file.getContentType(), isPopular, category, file.getBytes(), name, price);
 			return dbFileRepository.save(dbFile);
 			
 		} catch (IOException ex) {
@@ -61,7 +61,7 @@ public class DatabaseFileServiceImpl implements DatabaseFileService {
 			for(DatabaseFile selectedFile: imagefile) {
 				String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/")
 						.path(selectedFile.getId()).toUriString();
-				imageList.add(new ImageDataResponse(selectedFile.getId(), fileDownloadUri));
+				imageList.add(new ImageDataResponse(selectedFile.getId(), fileDownloadUri, selectedFile.getName(), selectedFile.getPrice()));
 			}
 			
 			imageMap.put(category, imageList);
@@ -81,7 +81,7 @@ public class DatabaseFileServiceImpl implements DatabaseFileService {
 				if (selectedFile.getIsPopular()) {
 					String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/")
 							.path(selectedFile.getId()).toUriString();
-					imageList.add(new ImageDataResponse(selectedFile.getId(), fileDownloadUri));
+					imageList.add(new ImageDataResponse(selectedFile.getId(), fileDownloadUri, selectedFile.getName(), selectedFile.getPrice()));
 				}
 			}
 
