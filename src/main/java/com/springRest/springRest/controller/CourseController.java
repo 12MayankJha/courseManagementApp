@@ -17,7 +17,7 @@ import com.springRest.springRest.payload.CoursesResponse;
 import com.springRest.springRest.services.CourseService;
 
 @RestController
-public class Controller {
+public class CourseController {
 	
 	@Autowired
 	private CourseService service;
