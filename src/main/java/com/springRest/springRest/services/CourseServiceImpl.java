@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.springRest.springRest.dao.CourseDao;
+import com.springRest.springRest.dao.DatabaseFileRepository;
 import com.springRest.springRest.entities.Courses;
 
 @Service
@@ -15,6 +16,9 @@ public class CourseServiceImpl implements CourseService {
 	
 	@Autowired
 	private CourseDao courseDao;
+	
+	@Autowired
+	private DatabaseFileRepository databaseFileDao;
 
 	//List<Courses> list;
 	
@@ -28,9 +32,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 	
 	@Override
-	public List<Courses> getCourses() {
-		//return list;
-		
+	public List<Courses> getCourses() {	
 		return courseDao.findAll();
 	}
 
@@ -86,6 +88,13 @@ public class CourseServiceImpl implements CourseService {
 		
 		Courses course = courseDao.getById(courseId);
 		courseDao.delete(course);
+		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<HttpStatus> deleteAll() {
+		courseDao.deleteAll();
+		databaseFileDao.deleteAll();
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
 
