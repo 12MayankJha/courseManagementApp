@@ -15,13 +15,6 @@ public class DatabaseFile {
 
 	private String fileType;
 	
-	private Boolean isPopular;
-	
-	private String category;
-	
-	private String name;
-	
-	private String price;
 	
 	@Lob
 	//@Type(type = "org.hibernate.type.ImageType")
@@ -32,16 +25,11 @@ public class DatabaseFile {
 	}
 
 
-	public DatabaseFile(String fileName, String fileType, Boolean isPopular, String category, byte[] data, String name,
-			String price) {
+	public DatabaseFile(String fileName, String fileType, byte[] data) {
 		super();
 		this.fileName = fileName;
 		this.fileType = fileType;
-		this.isPopular = isPopular;
-		this.category = category;
 		this.data = data;
-		this.name = name;
-		this.price = price;
 	}
 
 
@@ -75,45 +63,6 @@ public class DatabaseFile {
 
 	public void setData(byte[] data) {
 		this.data = data;
-	}
-
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-
-	public Boolean getIsPopular() {
-		return isPopular;
-	}
-
-
-	public void setIsPopular(Boolean isPopular) {
-		this.isPopular = isPopular;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(String price) {
-		this.price = price;
 	}
 
 }
