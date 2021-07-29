@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import com.springRest.springRest.entities.Courses;
 
 public interface CourseService {
@@ -18,6 +17,8 @@ public interface CourseService {
 	public ResponseEntity<HttpStatus> updateCourse(Courses course);
 
 	public ResponseEntity<HttpStatus> deleteCourse(Long courseId);
+
+	public ResponseEntity<HttpStatus> deleteAll();
 
 	
 

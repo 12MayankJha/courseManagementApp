@@ -1,7 +1,12 @@
 package com.springRest.springRest.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Courses {
 
+	@Id
 	private long id;
 	private String name;
 	private String description;
